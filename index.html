@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FynixTrade — Rise. Trade. Evolve.</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+
+  <meta name="theme-color" content="#0a0a0f">
+</head>
+<body>
+  <!-- LOADER -->
+<!-- Futuristic Shake Text Loader -->
+<!-- Loader -->
+<div id="loader">
+  <h1 class="loader-text">
+    <span>F</span><span>y</span><span>n</span><span>i</span><span>x</span>
+    <span>T</span><span>r</span><span>a</span><span>d</span><span>e</span>
+  </h1>
+</div>
+
+
+
+
+
+
+  <!-- PAGE -->
+  <main id="page" aria-hidden="true">
+    <header class="header">
+      <div class="logo" id="logo">
+        <!-- simple text logo; will be swapped with uploaded SVG later -->
+        <span class="brand-name">Fynix<span class="accent">Trade</span></span>
+      </div>
+
+      <!-- NAV -->
+      <nav class="nav">
+        <ul class="nav-links" id="navLinks">
+          <li style="--i:0"><a href="index.html">Home</a></li>
+          <li style="--i:1"><a href="markets.html">Markets</a></li>
+          <li style="--i:2"><a href="trade.html">Trade</a></li>
+          <li style="--i:3"><a href="about.html">About</a></li>
+          <li style="--i:4"><a href="contact.html">Contact</a></li>
+          <li style="--i:5"><a class="cta" href="#getstarted">Get Started</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger (CSS bars) -->
+      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar b1"></span>
+        <span class="bar b2"></span>
+        <span class="bar b3"></span>
+      </button>
+      
+
+      <!-- overlay for mobile menu -->
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1" aria-hidden="true"></div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <canvas id="heroParticles" class="hero-canvas"></canvas>
+      
+      <div class="hero-inner">
+        <h1>Precision Trading.<br>Infinite Growth.</h1>
+        <h2>Empowering modern traders with clarity, speed, and innovation.</h2>
+        <div class="hero-actions">
+          <a class="btn primary" href="#getstarted">Start Trading</a>
+          <a class="btn light" href="#learn">Learn More</a>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- FEATURES -->
+    <section id="about" class="features">
+      <h2 class="section-title">Why <span>FynixTrade</span></h2>
+      <div class="cards">
+    
+        <article class="card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="50" height="50">
+              <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
+            </svg>
+          </div>
+          <h3>Lightning Execution</h3>
+          <p>Low-latency order routing and instant fills across asset classes.</p>
+        </article>
+    
+        <article class="card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="50" height="50">
+              <path d="M12 22c6 0 10-8 10-8s-4-8-10-8S2 14 2 14s4 8 10 8Z"></path>
+              <circle cx="12" cy="14" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Enterprise Security</h3>
+          <p>Industry-grade encryption, secure custody, and 24/7 audits.</p>
+        </article>
+    
+        <article class="card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00ffee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="50" height="50">
+              <rect x="3" y="12" width="4" height="8"></rect>
+              <rect x="10" y="9" width="4" height="11"></rect>
+              <rect x="17" y="4" width="4" height="16"></rect>
+            </svg>
+          </div>
+          <h3>Smart Insights</h3>
+          <p>Real-time analytics and clean visualizations for confident trades.</p>
+        </article>
+    
+      </div>
+    </section>
+    
+    <section id="how" class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <article class="step">
+          <img src="assets/img/signup.png" alt="Sign Up">
+          <h3>Create Your Account</h3>
+          <p>Join in minutes with secure verification and instant dashboard setup.</p>
+        </article>
+        <article class="step">
+          <img src="assets/img/fund.png" alt="Fund Wallet">
+          <h3>Fund & Choose a Market</h3>
+          <p>Deposit instantly and access forex, crypto, and stocks with one wallet.</p>
+        </article>
+        <article class="step">
+          <img src="assets/img/trade.png" alt="Start Trading">
+          <h3>Trade & Grow</h3>
+          <p>Use smart insights and lightning execution to maximize your edge.</p>
+        </article>
+      </div>
+    </section>
+    
+    <!-- STATS SECTION -->
+<!-- STATS SECTION -->
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <h2>Trading Performance</h2>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M3 12l5 5L21 5" />
+        </svg>
+        <span class="num" data-target="1200000">0</span>
+        <span class="label">Successful Trades</span>
+      </div>
+
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </svg>
+        <span class="num" data-target="5000">0</span>
+        <span class="label">Active Investors</span>
+      </div>
+
+      <div class="stat">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M4 12h16M4 6h16M4 18h16" />
+        </svg>
+        <span class="num" data-target="98">0</span>
+        <span class="label">Markets Supported</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- MARKET PREVIEW -->
+    <section class="market-ticker">
+      <div class="ticker">
+        <div class="ticker-item">BTC/USD <span class="up">+2.45%</span></div>
+        <div class="ticker-item">ETH/USD <span class="down">-1.12%</span></div>
+        <div class="ticker-item">AAPL <span class="up">+0.89%</span></div>
+        <div class="ticker-item">TSLA <span class="down">-0.57%</span></div>
+        <div class="ticker-item">EUR/USD <span class="up">+0.34%</span></div>
+        <div class="ticker-item">GBP/USD <span class="down">-0.20%</span></div>
+        <div class="ticker-item">XAU/USD <span class="up">+0.71%</span></div>
+        <div class="ticker-item">USD/JPY <span class="down">-0.14%</span></div>
+      </div>
+    </section>
+
+    <section class="platform-overview" id="platform">
+      <div class="platform-inner">
+    
+        <!-- LEFT CONTENT -->
+        <div class="platform-left">
+          <h2 class="section-title">Trade Smarter with FynixTrade</h2>
+          <p class="platform-lead">
+            FynixTrade combines precision analytics, next-gen security, and ultra-fast execution
+            — empowering you to trade with confidence anytime, anywhere.
+          </p>
+    
+          <div class="platform-stats">
+            <!-- Stat 1 -->
+            <div class="stat">
+              <div class="stat-icon">
+                <!-- Rocket -->
+
+            
+                <svg viewBox="0 0 512 512" fill="none" stroke="#00d9ff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/>
+                  
+                </svg>
+              </div>
+              <div class="stat-value" data-target="1200">0</div>
+              <div class="stat-label">Avg. Execution (ms)</div>
+            </div>
+    
+            <!-- Stat 2: Static (non-numeric) -->
+  <div class="stat">
+    <div class="stat-icon">
+      <!-- Shield -->
+
+
+      <svg viewBox="0 0 512 512" fill="none" stroke="#00ffa1" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/>
+      </svg>
+    </div>
+    <div class="stat-value"data-target="264">0</div>
+    <div class="stat-label">Encryption (bit)</div>
+  </div>
+    
+            <!-- Stat 3: Animated -->
+  <div class="stat">
+    <div class="stat-icon">
+      <!-- Chart -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#9f7bff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="20" x2="12" y2="10"/>
+        <line x1="18" y1="20" x2="18" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="16"/>
+      </svg>
+    </div>
+    <div class="stat-value" data-target="99.9">0</div>
+    <div class="stat-label">Uptime (%)</div>
+  </div>
+        <!-- Stat 4: Static -->
+  <div class="stat">
+    <div class="stat-icon">
+      <!-- Globe -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffb400" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20z"/>
+      </svg>
+    </div>
+    <div class="stat-value" data-target="24.7">0</div>
+    <div class="stat-label">Global Access</div>
+  </div>
+</div>
+    
+          <div class="platform-cta">
+            <a href="#getstarted" class="btn primary">Start Trading</a>
+            <a href="#learn" class="btn light">Learn More</a>
+          </div>
+        </div>
+    
+        <!-- RIGHT PREVIEW -->
+        <div class="platform-right">
+          <div class="dashboard-card">
+            <div class="card-head">
+              <span class="btcticker">BTC/USD</span>
+              <span class="price">$67,840 <span class="pct up">+2.34%</span></span>
+            </div>
+            <canvas class="sparkline"></canvas>
+            <div class="card-footer">
+              <div class="cf-item">
+                <small>High</small><strong>$68,400</strong>
+              </div>
+              <div class="cf-item">
+                <small>Low</small><strong>$66,920</strong>
+              </div>
+              <div class="cf-item">
+                <small>Volume</small><strong>21.5K</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+
+    
+  <!-- ===== TESTIMONIALS & TRUST ===== -->
+  <section id="testimonials" class="testimonials-section">
+    <h2 class="section-title">What Our Traders Say</h2>
+  
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          “FynixTrade completely transformed my trading experience. The execution speed and insights are unmatched.”
+        </p>
+        <div class="testimonial-user">
+          <img src="assets/img/avatar.jpg" alt="User 1">
+          <div>
+            <h4>Michael D.</h4>
+            <span>Pro Trader</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          “The UI is sleek and intuitive. Funding my wallet and trading across markets feels effortless.”
+        </p>
+        <div class="testimonial-user">
+          <img src="assets/img/avatar.jpg" alt="User 2">
+          <div>
+            <h4>Sarah L.</h4>
+            <span>Crypto Investor</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          “Finally, a platform that blends power and simplicity. I can trade confidently anywhere, anytime.”
+        </p>
+        <div class="testimonial-user">
+          <img src="assets/img/avatar.jpg" alt="User 3">
+          <div>
+            <h4>David R.</h4>
+            <span>Stock Analyst</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- ===== JOIN CTA ===== -->
+<section class="join-cta">
+  <div class="join-inner">
+    <h2>Ready to rise with FynixTrade?</h2>
+    <p>Open an account in minutes and begin trading on a platform built for speed and clarity.</p>
+    <div class="join-actions">
+      <a class="btn primary" href="/signup">Create Account</a>
+      <a class="btn light" href="/learn">How It Works</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="faq-section" id="faq">
+  <h2 class="faq-title">Frequently Asked <span class="accent">Questions</span></h2>
+  <p class="faq-subtitle">Got questions? We’ve got answers to help you trade smarter.</p>
+
+  <div class="faq-container">
+    <!-- FAQ ITEM 1 -->
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>What is FynixTrade and how does it work?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          FynixTrade is a next-generation trading platform that provides real-time data, 
+          market analytics, and secure transactions to help you make informed investment decisions.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 2 -->
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Is my data secure on FynixTrade?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Absolutely. We use end-to-end encryption and multi-layered security protocols 
+          to ensure that your information and assets remain safe at all times.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 3 -->
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>How do I start trading?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Simply create an account, verify your identity, and deposit funds. 
+          Once your wallet is set up, you can explore the markets and begin trading instantly.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 4 -->
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Does FynixTrade charge any fees?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We maintain transparent, low trading fees that vary by asset type. 
+          You can view the exact breakdown of costs in the “Fees & Rates” section of your dashboard.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Column 1: Brand/About -->
+    <div class="footer-col about">
+      <h3 class="footer-logo">Fynix<span class="accent">Trade</span></h3>
+      <p>
+        FynixTrade connects you to the world of digital finance. 
+        Trade smarter with insights, analytics, and secure transactions.
+      </p>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#markets">Markets</a></li>
+        <li><a href="#trade">Trade</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Newsletter + Socials -->
+    <div class="footer-col social">
+      <h4>Stay Connected</h4>
+      <form class="newsletter">
+        <input type="email" placeholder="Enter your email" />
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> FynixTrade. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FynixTrade — Rise. Trade. Evolve.</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/markets.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+  <meta name="theme-color" content="#0a0a0f">
+</head>
+<body>
+  <!-- LOADER -->
+<!-- Futuristic Shake Text Loader -->
+<div id="loader">
+  <h1 class="loader-text">
+    <span>F</span><span>y</span><span>n</span><span>i</span><span>x</span>
+    <span>T</span><span>r</span><span>a</span><span>d</span><span>e</span>
+  </h1>
+</div>
+
+
+
+  <!-- PAGE -->
+  <main id="page" aria-hidden="true">
+    <header class="header">
+      <div class="logo" id="logo">
+        <!-- simple text logo; will be swapped with uploaded SVG later -->
+        <span class="brand-name">Fynix<span class="accent">Trade</span></span>
+      </div>
+
+      <!-- NAV -->
+      <nav class="nav">
+        <ul class="nav-links" id="navLinks">
+          <li style="--i:0"><a href="index.html">Home</a></li>
+          <li style="--i:1"><a href="markets.html">Markets</a></li>
+          <li style="--i:2"><a href="trade.html">Trade</a></li>
+          <li style="--i:3"><a href="about.html">About</a></li>
+          <li style="--i:4"><a href="contact.html">Contact</a></li>
+          <li style="--i:5"><a class="cta" href="#getstarted">Get Started</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger (CSS bars) -->
+      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar b1"></span>
+        <span class="bar b2"></span>
+        <span class="bar b3"></span>
+      </button>
+      
+
+      <!-- overlay for mobile menu -->
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1" aria-hidden="true"></div>
+    </header>
+
+
+    <section id="market-overview" class="head-overview">
+      <div class="headingbg">
+        <h2 class="section-title">Market Overview</h2>
+        <p>Track crypto, forex, and stocks with real-time updates and futuristic insights.</p>
+  
+        </div>
+        <div class="market-grid">
+  
+          <!-- Bitcoin -->
+          <div class="market-card">
+            <div class="m-head">
+              <img src="assets/img/btc.svg" alt="BTC" class="coin-icon">
+              <span class="coin-name">Bitcoin <small>BTC/USD</small></span>
+              <span class="coin-change up">+2.34%</span>
+            </div>
+            <div class="m-price">$67,842</div>
+            <canvas class="sparkline"></canvas>
+          </div>
+      
+          <!-- Ethereum -->
+          <div class="market-card">
+            <div class="m-head">
+              <img src="assets/img/eth.svg" alt="ETH" class="coin-icon">
+              <span class="coin-name">Ethereum <small>ETH/USD</small></span>
+              <span class="coin-change down">-1.28%</span>
+            </div>
+            <div class="m-price">$3,114</div>
+            <canvas class="sparkline"></canvas>
+          </div>
+      
+          <!-- NASDAQ -->
+          <div class="market-card">
+            <div class="m-head">
+              <img src="assets/img/Nasdaq-Logo.png" alt="NASDAQ" class="coin-icon">
+              <span class="coin-name">NASDAQ <small>IXIC</small></span>
+              <span class="coin-change up">+0.52%</span>
+            </div>
+            <div class="m-price">17,215.87</div>
+            <canvas class="sparkline"></canvas>
+          </div>
+      
+          <!-- EUR/USD -->
+          <div class="market-card">
+            <div class="m-head">
+              <img src="assets/img/eurusd.svg" alt="EURUSD" class="coin-icon">
+              <span class="coin-name">EUR/USD</span>
+              <span class="coin-change down">-0.11%</span>
+            </div>
+            <div class="m-price">1.0724</div>
+            <canvas class="sparkline"></canvas>
+          </div>
+      
+        </div>
+      </section>
+      
+
+      <section id="market-table" class="market-section">
+        <h2 class="market-heading">Live Market Data</h2>
+      
+        <div class="market-table-wrapper">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Price (USD)</th>
+                <th>24h Change</th>
+                <th>Volume</th>
+                <th>Chart</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="marketData">
+              <!-- JS will populate this -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+
+    
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+      <!-- Column 1: Brand/About -->
+      <div class="footer-col about">
+        <h3 class="footer-logo">Fynix<span class="accent">Trade</span></h3>
+        <p>
+          FynixTrade connects you to the world of digital finance. 
+          Trade smarter with insights, analytics, and secure transactions.
+        </p>
+      </div>
+  
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets">Markets</a></li>
+          <li><a href="trade">Trade</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Column 3: Newsletter + Socials -->
+      <div class="footer-col social">
+        <h4>Stay Connected</h4>
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email" />
+          <button type="submit">Subscribe</button>
+        </form>
+  
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 FynixTrade. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  
+    </main>
+  
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/market.js"></script>
+  </body>
+  </html>
+  
