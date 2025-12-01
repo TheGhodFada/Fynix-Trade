@@ -1,0 +1,35 @@
+<!-- login.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — FynixTrade</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-panel">
+      <div class="logo"><span class="brand-name">Fynix<span class="accent">Trade</span></span></div>
+      <h2>Welcome back</h2>
+      <form id="loginForm" class="auth-form">
+        <label>
+          <span>Email</span>
+          <input required id="loginEmail" type="email" placeholder="you@domain.com" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input required id="loginPassword" type="password" placeholder="Your password" />
+        </label>
+        <button class="btn primary" id="loginBtn" type="submit">Sign in</button>
+      </form>
+      <p class="muted">No account? <a href="signup.html">Create one</a></p>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="assets/js/supabase.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

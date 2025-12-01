@@ -1,0 +1,41 @@
+<!-- signup.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign up — FynixTrade</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-panel">
+      <div class="logo"><span class="brand-name">Fynix<span class="accent">Trade</span></span></div>
+      <h2>Create your account</h2>
+      <form id="signupForm" class="auth-form">
+        <label>
+          <span>Full name</span>
+          <input required id="signupName" type="text" placeholder="Jane Doe" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input required id="signupEmail" type="email" placeholder="you@domain.com" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input required id="signupPassword" type="password" placeholder="Strong password" />
+        </label>
+        <button class="btn primary" id="signupBtn" type="submit">Create account</button>
+      </form>
+
+      <p class="muted">Already have an account? <a href="login.html">Log in</a></p>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="assets/js/supabase.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
