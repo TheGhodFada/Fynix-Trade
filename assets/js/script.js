@@ -534,4 +534,5 @@ if (contactForm) {
   contactForm.addEventListener('submit', () => {
     contactLoader.classList.add('active');
   });
+
 }
