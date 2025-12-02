@@ -4,6 +4,9 @@ import { supabase } from "./supabase.js";
 // ===============================
 // SIGN UP
 // ===============================
+// ===============================
+// SIGN UP
+// ===============================
 async function signup(event) {
   event.preventDefault();
 
@@ -14,12 +17,12 @@ async function signup(event) {
   const btn = document.getElementById("signupBtn");
   btn.disabled = true;
 
+  // No need for emailRedirectTo since confirmation is disabled
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      data: { fullname: fullname },
-      emailRedirectTo: "https://theghodfada.github.io/Fynix-Trade/"
+      data: { fullname: fullname }
     }
   });
 
@@ -29,10 +32,20 @@ async function signup(event) {
     return;
   }
 
-  alert("Account created! Check your email to verify.");
+  // When confirmation is disabled, the user is logged in immediately.
+  // The 'data' object will contain a session.
+  if (data.session) {
+    // SUCCESS → User is logged in, redirect to dashboard
+    alert("Account created successfully!");
+    window.location.href = "dashboard.html";
+  } else {
+    // This case is unlikely if confirmation is disabled in Supabase
+    alert("Something went wrong. Please try logging in.");
+    window.location.href = "index.html"; // Your login page
+  }
+
   btn.disabled = false;
 }
-
 
 // ===============================
 // LOGIN
@@ -74,4 +87,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   if (loginForm) loginForm.addEventListener("submit", login);
 });
+
 
