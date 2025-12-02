@@ -8,28 +8,42 @@
 
 <body>
 
-  <main class="auth-page">
-    <div class="auth-panel">
-      <h2>Login</h2>
-
-      <form id="loginForm">
-        <label>Email
-          <input type="email" id="loginEmail" required>
-        </label>
-
-        <label>Password
-          <input type="password" id="loginPassword" required>
-        </label>
-
-        <button id="loginBtn" class="btn primary" type="submit">Login</button>
-      </form>
-
-      <p>No account? <a href="signup.html">Create one</a></p>
+  <section class="auth-page">
+  <div class="auth-card">
+    <div class="card-head">
+      <h3>Welcome back</h3>
+      <span class="logo"><span class="accent">Fynix</span>Trade</span>
     </div>
-  </main>
+
+    <p class="lead">Sign in to continue to your dashboard.</p>
+
+    <form id="loginForm" class="auth-form" autocomplete="on">
+      <div class="input-group">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" name="email" type="email" placeholder="you@domain.com" required />
+      </div>
+
+      <div class="input-group">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" placeholder="••••••••" required />
+        <button type="button" class="input-toggle" aria-label="Toggle password">Show</button>
+      </div>
+
+      <div class="auth-actions">
+        <div class="left">
+          <button id="loginBtn" type="submit">Sign in</button>
+        </div>
+        <div class="right auth-aux">
+          <a href="forgot.html">Forgot password?</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 
   <script type="module" src="assets/js/supabase.js"></script>
   <script type="module" src="assets/js/auth.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
