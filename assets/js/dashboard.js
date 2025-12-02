@@ -1,89 +1,87 @@
 // assets/js/dashboard.js
-import { supabase } from './supabase.js';
+import { supabase } from "./supabase.js";
 
-// protect route
-async function protectRoute() {
-  const user = supabase.auth.user();
+// ===============================
+// PROTECT ROUTE
+// ===============================
+async function getCurrentUser() {
+  const { data } = await supabase.auth.getUser();
+  return data.user;
+}
+
+async function protect() {
+  const user = await getCurrentUser();
   if (!user) {
-    window.location.href = 'login.html';
-    return null;
+    window.location.href = "login.html";
   }
   return user;
 }
 
-// load profile + portfolio
+// ===============================
+// LOAD PROFILE INFO
+// ===============================
 async function loadDashboard() {
-  const user = await protectRoute();
+  const user = await protect();
   if (!user) return;
 
-  // fetch profile row
-  const { data: profile, error } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
+  // Fetch profile row
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", user.id)
     .single();
 
-  if (error) {
-    console.error('Profile fetch error', error);
-  } else {
-    document.getElementById('displayName').textContent = profile.full_name || 'Trader';
-    document.getElementById('displayEmail').textContent = user.email;
-    document.getElementById('balance').textContent = (Number(profile.balance) || 0).toLocaleString();
-  }
+  // Update UI
+  document.getElementById("displayName").textContent =
+    profile?.full_name || "Trader";
 
-  // fetch portfolio (simple)
+  document.getElementById("displayEmail").textContent = user.email;
+  document.getElementById("balance").textContent =
+    Number(profile?.balance || 0).toLocaleString();
+
+  // Portfolio load
   const { data: portfolio } = await supabase
-    .from('portfolio')
-    .select('*')
-    .eq('user_id', user.id);
+    .from("portfolio")
+    .select("*")
+    .eq("user_id", user.id);
 
   renderPortfolio(portfolio || []);
-
-  // realtime: listen to profile updates
-  supabase
-    .from(`profiles:id=eq.${user.id}`)
-    .on('UPDATE', payload => {
-      const p = payload.new;
-      document.getElementById('balance').textContent = (Number(p.balance) || 0).toLocaleString();
-    })
-    .subscribe();
 }
 
 function renderPortfolio(items) {
-  const ul = document.getElementById('portfolioList');
-  if (!ul) return;
-  ul.innerHTML = '';
-  if (!items.length) {
-    ul.innerHTML = '<li class="empty">No assets yet — fund your wallet to start trading.</li>';
+  const list = document.getElementById("portfolioList");
+  list.innerHTML = "";
+
+  if (items.length === 0) {
+    list.innerHTML = `<li class="empty">No assets yet.</li>`;
     return;
   }
-  items.forEach(it => {
-    const li = document.createElement('li');
-    li.className = 'portfolio-item';
+
+  items.forEach((it) => {
+    const li = document.createElement("li");
+    li.className = "portfolio-item";
     li.innerHTML = `
-      <div class="p-left">
-        <strong>${it.asset.toUpperCase()}</strong>
-        <small>${(Number(it.amount)||0).toFixed(6)} units</small>
-      </div>
-      <div class="p-right">
-        <small>Value</small>
-        <strong>${(Number(it.value_usd)||0).toLocaleString()}</strong>
-      </div>
+      <strong>${it.asset.toUpperCase()}</strong>
+      <span>${Number(it.amount).toFixed(6)} units</span>
     `;
-    ul.appendChild(li);
+    list.appendChild(li);
   });
 }
 
+// ===============================
+// LOGOUT
+// ===============================
 async function logout() {
   await supabase.auth.signOut();
-  window.location.href = 'login.html';
+  window.location.href = "login.html";
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // handle logout button
-  const logoutBtn = document.getElementById('logoutBtn');
-  if (logoutBtn) logoutBtn.addEventListener('click', logout);
+// ===============================
+// INIT
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) logoutBtn.addEventListener("click", logout);
 
-  // initial load
-  await loadDashboard();
+  loadDashboard();
 });
