@@ -2601,3 +2601,14 @@ text-align: center;
   #signupBtn, #loginBtn { width: 100%; }
   .auth-actions { flex-direction: column; align-items: stretch; gap: .6rem; }
 }
+/* inline form error messages for auth forms */
+.auth-form .error,
+#loginError,
+#signupError {
+  color: #ff6677;
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+  line-height: 1.3;
+  display: none; /* JS will show when needed */
+}
+
