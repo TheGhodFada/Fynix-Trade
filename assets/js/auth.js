@@ -6,27 +6,30 @@ import { supabase } from "./supabase.js";
 // ===============================
 async function signup(event) {
   event.preventDefault();
-  const btn = document.getElementById('signupBtn');
+
+  const email = document.getElementById("signupEmail").value.trim();
+  const password = document.getElementById("signupPassword").value;
+  const fullname = document.getElementById("signupName").value.trim();
+
+  const btn = document.getElementById("signupBtn");
   btn.disabled = true;
 
-  const full_name = document.getElementById('signupName').value.trim();
-  const email = document.getElementById('signupEmail').value.trim();
-  const password = document.getElementById('signupPassword').value.trim();
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { fullname: fullname },
+      emailRedirectTo: "https://theghodfada.github.io/Fynix-Trade/"
+    }
+  });
 
-  try {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password
-    });
-
-    if (error) throw error;
-
-    alert("Account created! Check your email to verify your account.");
-
-  } catch (err) {
-    alert(err.message);
+  if (error) {
+    alert(error.message);
+    btn.disabled = false;
+    return;
   }
 
+  alert("Account created! Check your email to verify.");
   btn.disabled = false;
 }
 
@@ -71,3 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   if (loginForm) loginForm.addEventListener("submit", login);
 });
+
