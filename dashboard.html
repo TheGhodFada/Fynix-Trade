@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard — FynixTrade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">FynixTrade</div>
+  <nav>
+    <button id="logoutBtn" class="btn danger">Logout</button>
+  </nav>
+</header>
+
+<main style="padding-top: 120px; max-width: 900px; margin: auto;">
+
+  <h2>Welcome, <span id="displayName">User</span></h2>
+  <p>Email: <span id="displayEmail"></span></p>
+
+  <h3>Your Balance</h3>
+  <p style="font-size: 2rem;" id="balance">0</p>
+
+  <h3>Your Portfolio</h3>
+  <ul id="portfolioList" class="portfolio-list">
+    <li>Loading…</li>
+  </ul>
+
+</main>
+
+<script type="module" src="assets/js/supabase.js"></script>
+<script type="module" src="assets/js/dashboard.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
