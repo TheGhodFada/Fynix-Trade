@@ -18,32 +18,34 @@
     <p class="lead">Create your free account to access the dashboard.</p>
 
     <form id="signupForm" class="auth-form" autocomplete="on">
-      <div class="input-group">
-        <label for="signupName">Full name</label>
-        <input id="signupName" name="fullname" type="text" placeholder="Jane Doe" required />
-      </div>
+  <div class="input-group">
+    <label for="signupName">Full name</label>
+    <input id="signupName" name="fullname" type="text" placeholder="Jane Doe" required />
+  </div>
 
-      <div class="input-group">
-        <label for="signupEmail">Email</label>
-        <input id="signupEmail" name="email" type="email" placeholder="you@domain.com" required />
-      </div>
+  <div class="input-group">
+    <label for="signupEmail">Email</label>
+    <input id="signupEmail" name="email" type="email" placeholder="you@domain.com" required />
+  </div>
 
-      <div class="input-group">
-        <label for="signupPassword">Password</label>
-        <input id="signupPassword" name="password" type="password" placeholder="••••••••" required />
-        <!-- optional toggle button if you add JS to toggle -->
-        <button type="button" class="input-toggle" aria-label="Toggle password">Show</button>
-      </div>
+  <div class="input-group">
+    <label for="signupPassword">Password</label>
+    <input id="signupPassword" name="password" type="password" placeholder="••••••••" required />
+    <button type="button" class="input-toggle" aria-label="Toggle password" aria-pressed="false">Show</button>
+  </div>
 
-      <div class="auth-actions">
-        <div class="left">
-          <button id="signupBtn" type="submit">Create account</button>
-        </div>
-        <div class="right auth-aux">
-          <span>Already have an account? <a href="index.html">Log in</a></span>
-        </div>
-      </div>
-    </form>
+  <!-- inline error container -->
+  <div id="signupError" class="error" role="alert" aria-live="assertive" style="display:none"></div>
+
+  <div class="auth-actions">
+    <div class="left">
+      <button id="signupBtn" type="submit" class="btn primary">Create account</button>
+    </div>
+    <div class="right auth-aux">
+      <span>Already have an account? <a href="index.html">Log in</a></span>
+    </div>
+  </div>
+</form>
   </div>
 </section>
 
@@ -52,4 +54,5 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
 
