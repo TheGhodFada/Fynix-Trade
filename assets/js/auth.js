@@ -1,92 +1,142 @@
 // assets/js/auth.js
 import { supabase } from "./supabase.js";
 
-// ===============================
-// SIGN UP
-// ===============================
-// ===============================
-// SIGN UP
-// ===============================
+/* Inline error helpers */
+function showError(id, message) {
+  const el = document.getElementById(id);
+  if (!el) {
+    alert(message); // fallback
+    return;
+  }
+  el.textContent = message || "";
+  el.style.display = message ? "block" : "none";
+}
+function clearError(id) { showError(id, ""); }
+
+/* Small loading helper for buttons */
+function setBtnLoading(btn, loading, label) {
+  if (!btn) return;
+  if (loading) {
+    btn.dataset.origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = label || "Please wait...";
+  } else {
+    btn.disabled = false;
+    btn.textContent = btn.dataset.origText || btn.textContent;
+  }
+}
+
+/* SIGN UP */
 async function signup(event) {
   event.preventDefault();
-
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value;
   const fullname = document.getElementById("signupName").value.trim();
-
   const btn = document.getElementById("signupBtn");
-  btn.disabled = true;
+  const errId = "signupError";
 
-  // No need for emailRedirectTo since confirmation is disabled
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { fullname: fullname }
-    }
-  });
+  clearError(errId);
+  setBtnLoading(btn, true, "Creating...");
 
-  if (error) {
-    alert(error.message);
-    btn.disabled = false;
+  if (!email || !password || !fullname) {
+    showError(errId, "Please fill in all fields.");
+    setBtnLoading(btn, false);
+    return;
+  }
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email)) {
+    showError(errId, "Please enter a valid email address.");
+    setBtnLoading(btn, false);
     return;
   }
 
-  // When confirmation is disabled, the user is logged in immediately.
-  // The 'data' object will contain a session.
-  if (data.session) {
-    // SUCCESS → User is logged in, redirect to dashboard
-    alert("Account created successfully!");
-    window.location.href = "dashboard.html";
-  } else {
-    // This case is unlikely if confirmation is disabled in Supabase
-    alert("Something went wrong. Please try logging in.");
-    window.location.href = "index.html"; // Your login page
-  }
-
-  btn.disabled = false;
-}
-
-// ===============================
-// LOGIN
-// ===============================
-async function login(event) {
-  event.preventDefault();
-  const btn = document.getElementById('loginBtn');
-  btn.disabled = true;
-
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value.trim();
-
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
+    const { data, error } = await supabase.auth.signUp({
+      email, password,
+      options: { data: { fullname } }
     });
 
-    if (error) throw error;
+    if (error) {
+      showError(errId, error.message || "Failed to create account.");
+      setBtnLoading(btn, false);
+      return;
+    }
 
-    // SUCCESS → redirect
-    window.location.href = "dashboard.html";
-
+    if (data?.session) {
+      // logged in immediately
+      window.location.href = "dashboard.html";
+    } else {
+      // confirmation required
+      showError(errId, "Account created. Please check your email to confirm your account.");
+      setBtnLoading(btn, false);
+    }
   } catch (err) {
-    alert(err.message);
+    showError(errId, err?.message || "An unexpected error occurred.");
+    setBtnLoading(btn, false);
   }
-
-  btn.disabled = false;
 }
 
+/* LOGIN */
+async function login(event) {
+  event.preventDefault();
+  const btn = document.getElementById("loginBtn");
+  const errId = "loginError";
 
-// ===============================
-// Attach to forms
-// ===============================
+  clearError(errId);
+  setBtnLoading(btn, true, "Signing in...");
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  if (!email || !password) {
+    showError(errId, "Please enter both email and password.");
+    setBtnLoading(btn, false);
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      showError(errId, error.message || "Sign in failed.");
+      setBtnLoading(btn, false);
+      return;
+    }
+    window.location.href = "dashboard.html";
+  } catch (err) {
+    showError(errId, err?.message || "An unexpected error occurred.");
+    setBtnLoading(btn, false);
+  }
+}
+
+/* Password show/hide toggle (expects .input-toggle inside same .input-group) */
+function initPasswordToggles() {
+  document.querySelectorAll(".input-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const group = btn.closest(".input-group");
+      if (!group) return;
+      const input = group.querySelector("input");
+      if (!input) return;
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "Hide";
+        btn.setAttribute("aria-pressed", "true");
+      } else {
+        input.type = "password";
+        btn.textContent = "Show";
+        btn.setAttribute("aria-pressed", "false");
+      }
+      input.focus();
+    });
+  });
+}
+
+/* Attach listeners */
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
   if (signupForm) signupForm.addEventListener("submit", signup);
 
   const loginForm = document.getElementById("loginForm");
   if (loginForm) loginForm.addEventListener("submit", login);
+
+  initPasswordToggles();
 });
-
-
-
