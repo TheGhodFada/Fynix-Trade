@@ -1,298 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FynixTrade Dashboard</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-  <style>
-/* ===== Dashboard Styling (FynixTrade Full Theme Applied) ===== */
-.dashboard-body {
-  background:#0a0a0f;
-  font-family: 'Inter', sans-serif;
-  color:#fff;
-}
-
-/* HEADER (Glass + Neon Gradient Border) */
-.dashboard-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:22px 35px;
-  background:rgba(10,10,20,0.55);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(0,255,255,0.15);
-  box-shadow:0 4px 25px rgba(0,0,0,0.45);
-}
-
-.dash-logo {
-  font-size:1.9rem;
-  font-weight:900;
-  text-transform:uppercase;
-  background:linear-gradient(90deg,#00eaff,#7b2ff7);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  letter-spacing:1px;
-  text-shadow:0 0 20px rgba(0,238,255,0.25);
-}
-
-.dash-user span {
-  padding:7px 16px;
-  background:rgba(0,255,255,0.08);
-  border:1px solid rgba(0,255,255,0.18);
-  border-radius:10px;
-  color:#dffaff;
-  font-weight:600;
-}
-
-/* Sidebar */
-.dashboard-sidebar {
-  width:240px;
-  min-height:100vh;
-  background:radial-gradient(circle at top,#0b0b15,#050509);
-  border-right:1px solid rgba(0,255,255,0.1);
-  box-shadow:4px 0 25px rgba(0,0,0,0.4);
-  padding:20px 0;
-}
-
-.dashboard-sidebar li {
-  padding:16px 28px;
-  cursor:pointer;
-  color:#c3d4e8;
-  font-weight:500;
-  transition:0.3s;
-  border-left:4px solid transparent;
-}
-.dashboard-sidebar li:hover {
-  background:rgba(0,255,255,0.05);
-  padding-left:35px;
-}
-.dashboard-sidebar li.active {
-  background:rgba(0,255,255,0.1);
-  border-left:4px solid #00eaff;
-  color:#00eaff;
-  font-weight:700;
-  box-shadow:inset 0 0 18px rgba(0,255,255,0.15);
-}
-
-/* Main */
-.dashboard-main {
-  flex:1;
-  padding:40px;
-}
-
-/* Balance Cards */
-.balance-section {
-  display:grid;
-  gap:25px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  margin-bottom:45px;
-}
-
-.balance-card {
-  background:linear-gradient(145deg,#0e0e18,#05050c);
-  padding:24px;
-  border-radius:16px;
-  border:1px solid rgba(0,255,255,0.12);
-  box-shadow:0 0 25px rgba(0,255,255,0.08);
-  transition:0.3s;
-}
-.balance-card:hover {
-  transform:translateY(-5px) scale(1.02);
-  border-color:#00eaff;
-  box-shadow:0 0 30px rgba(0,255,255,0.25);
-}
-
-.balance-amount {
-  font-size:2.1rem;
-  margin-top:12px;
-  color:#00eaff;
-  font-weight:900;
-  text-shadow:0 0 18px rgba(0,238,255,0.5);
-}
-
-/* Portfolio */
-.portfolio-item {
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(0,255,255,0.06);
-  padding:18px;
-  border-radius:14px;
-  display:flex;
-  justify-content:space-between;
-  transition:0.3s ease;
-}
-
-.portfolio-item:hover {
-  background:rgba(0,255,255,0.06);
-  box-shadow:0 0 18px rgba(0,255,255,0.18);
-  transform:translateY(-4px);
-}
-
-/* Transactions */
-.transaction-table tr:hover td {
-  background:rgba(0,255,255,0.05);
-}
-
-/* Buttons */
-.action-btn {
-  padding:14px 32px;
-  background:linear-gradient(90deg,#00eaff,#7b2ff7);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
-  box-shadow:0 0 20px rgba(0,238,255,0.25);
-}
-.action-btn:hover {
-  transform:translateY(-4px);
-  box-shadow:0 0 30px rgba(0,238,255,0.5);
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Dashboard — FynixTrade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="dashboard-body">
 
-  <!-- ===== HEADER ===== -->
-  <header class="dashboard-header">
-    <h2 class="dash-logo">FynixTrade</h2>
-    <div class="dash-user">
-      <span id="usernameDisplay">Loading...</span>
-      <button id="logoutBtn" class="logout-btn">Logout</button>
-    </div>
-  </header>
+<body>
 
-  <!-- ===== MAIN WRAPPER ===== -->
-  <div class="dashboard-wrapper">
+<header class="header">
+  <div class="logo">FynixTrade</div>
+  <nav>
+    <button id="logoutBtn" class="btn danger">Logout</button>
+  </nav>
+</header>
 
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="dashboard-sidebar">
-      <ul>
-        <li class="active">Dashboard</li>
-        <li>Portfolio</li>
-        <li>Transactions</li>
-        <li>Deposit</li>
-        <li>Withdraw</li>
-        <li>Referral</li>
-        <li>Settings</li>
-      </ul>
-    </aside>
+<main style="padding-top: 120px; max-width: 900px; margin: auto;">
 
-    <!-- ===== CONTENT AREA ===== -->
-    <main class="dashboard-main">
+  <h2>Welcome, <span id="displayName">User</span></h2>
+  <p>Email: <span id="displayEmail"></span></p>
 
-      <!-- ===== BALANCE CARDS ===== -->
-      <section class="balance-section reveal">
-        <div class="balance-card">
-          <h4>Total Balance</h4>
-          <p id="totalBalance" class="balance-amount">$0.00</p>
-        </div>
+  <h3>Your Balance</h3>
+  <p style="font-size: 2rem;" id="balance">0</p>
 
-        <div class="balance-card">
-          <h4>Profit Today</h4>
-          <p id="profitToday" class="balance-amount">$0.00</p>
-        </div>
+  <h3>Your Portfolio</h3>
+  <ul id="portfolioList" class="portfolio-list">
+    <li>Loading…</li>
+  </ul>
 
-        <div class="balance-card">
-          <h4>Total Deposits</h4>
-          <p id="totalDeposits" class="balance-amount">$0.00</p>
-        </div>
+</main>
 
-        <div class="balance-card">
-          <h4>Total Withdrawals</h4>
-          <p id="totalWithdrawals" class="balance-amount">$0.00</p>
-        </div>
-      </section>
-
-      <!-- ===== PORTFOLIO SECTION ===== -->
-      <section class="portfolio-section reveal">
-        <h3>Your Portfolio</h3>
-        <canvas id="portfolioChart" class="sparkline"></canvas>
-        <div id="portfolioList" class="portfolio-list">
-          <!-- JS will inject portfolio items here -->
-        </div>
-      </section>
-
-      <!-- ===== TRANSACTION HISTORY ===== -->
-      <section class="transactions-section reveal">
-        <h3>Recent Transactions</h3>
-        <table class="transaction-table">
-          <thead>
-            <tr>
-              <th>Type</th><th>Amount</th><th>Status</th><th>Date</th>
-            </tr>
-          </thead>
-          <tbody id="transactionBody">
-            <!-- JS injects rows -->
-          </tbody>
-        </table>
-      </section>
-
-      <!-- ===== QUICK ACTIONS ===== -->
-      <section class="quick-actions reveal">
-        <button class="action-btn">Deposit</button>
-        <button class="action-btn">Withdraw</button>
-        <button class="action-btn">Start Trade</button>
-      </section>
-
-    </main>
-  </div>
-
-  <script src="assets/js/dashboard.js"></script>
-  <script>
-    // ===== SUPABASE INIT =====
-    const supabase = window.supabase.createClient(
-      "YOUR_SUPABASE_URL",
-      "YOUR_SUPABASE_ANON_KEY"
-    );
-
-    // ===== PROTECT DASHBOARD =====
-    (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) window.location.href = "login.html";
-      else document.getElementById("usernameDisplay").textContent = user.user_metadata?.fullname || user.email;
-    })();
-
-    // ===== LOGOUT =====
-    document.getElementById("logoutBtn").addEventListener("click", async () => {
-      await supabase.auth.signOut();
-      window.location.href = "login.html";
-    });
-
-    // ===== LOAD MOCK DATA (Replace with Supabase later) =====
-    document.getElementById("totalBalance").textContent = "$1,250.00";
-    document.getElementById("profitToday").textContent = "+$42.00";
-    document.getElementById("totalDeposits").textContent = "$4,000.00";
-    document.getElementById("totalWithdrawals").textContent = "$2,750.00";
-
-    const portfolioList = document.getElementById("portfolioList");
-    const samplePortfolio = [
-      { asset: "BTC", amount: "0.021", value: "$900" },
-      { asset: "ETH", amount: "0.51", value: "$1,200" }
-    ];
-
-    samplePortfolio.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "portfolio-item";
-      div.innerHTML = `
-        <span><strong>${item.asset}</strong> — ${item.amount}</span>
-        <span>${item.value}</span>
-      `;
-      portfolioList.appendChild(div);
-    });
-
-    const transactions = [
-      { type:"Deposit", amount:"$200", status:"Success", date:"Dec 15" },
-      { type:"Profit", amount:"$12", status:"Completed", date:"Dec 15" }
-    ];
-
-    const tbody = document.getElementById("transactionBody");
-    transactions.forEach(t => {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>${t.type}</td><td>${t.amount}</td><td>${t.status}</td><td>${t.date}</td>`;
-      tbody.appendChild(row);
-    });
-  </script>
+<script type="module" src="assets/js/supabase.js"></script>
+<script type="module" src="assets/js/dashboard.js"></script>
 </body>
 </html>
